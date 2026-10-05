@@ -3,141 +3,111 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17+" />
   <img src="https://img.shields.io/badge/Total%20Problems-45%20Completed-brightgreen?style=for-the-badge" alt="45 Problems" />
-  <img src="https://img.shields.io/badge/Build-Passing-success?style=for-the-badge&logo=github-actions&logoColor=white" alt="Build Passing" />
   <img src="https://img.shields.io/badge/Environment-VS%20Code%20%7C%20Terminal-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code" />
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
 </p>
 
-A production-grade, standalone Java practice repository designed for technical coding assessments, online examinations (OA), and VS Code pair-programming interviews.
+A clean, standalone Java practice repository designed for technical coding assessments and VS Code coding rounds.
 
-Unlike LeetCode snippets with predefined method signatures and black-box runners, **every single problem here is an independent, complete console application** reading from `stdin` and outputting to `stdout`.
+Every problem is an independent, complete console application reading from `stdin` and outputting to `stdout`.
 
 ---
 
 ## 📌 Table of Contents
 
-- [Key Features](#-key-features)
-- [How to Compile and Run](#-how-to-compile-and-run)
-- [3-Day High-Intensity Sprint Plan](#-3-day-high-intensity-sprint-plan)
-- [Complete 45-Problem Master Matrix](#-complete-45-problem-master-matrix)
+- [How to Run in VS Code / Terminal](#-how-to-run-in-vs-code--terminal)
+- [Multi-Format Input Support](#-multi-format-input-support)
+- [Complete 45-Problem Master Matrix (with Input Column)](#-complete-45-problem-master-matrix)
 - [Detailed Problem Catalog & Sample I/O](#-detailed-problem-catalog--sample-io)
-  - [🔴 Arrays (8)](#-arrays-8-problems)
-  - [🔴 Strings (6)](#-strings-6-problems)
-  - [🔴 Linked List (5)](#-linked-list-5-problems)
-  - [🟡 Trees (5)](#-trees-5-problems)
-  - [🟡 Graphs (4)](#-graphs-4-problems)
-  - [🔥 Recursion & Backtracking (4)](#-recursion--backtracking-4-problems)
-  - [☠️ Dynamic Programming (13)](#-dynamic-programming-13-problems)
-- [Contributing & License](#-license)
+- [License](#-license)
 
 ---
 
-## ✨ Key Features
+## 🛠️ How to Run in VS Code / Terminal
 
-- **Modern Java (17+)**: Uses pure Java standard library (`java.util`, `java.io`) without third-party frameworks.
-- **Standalone Programs**: Complete `public static void main(String[] args)` in every file with zero boilerplate dependencies.
-- **Robust I/O**: Fast `BufferedReader` and `StringTokenizer` parsing capable of handling competitive-programming scale inputs.
-- **Self-Contained Data Structures**: Local `ListNode` and `TreeNode` classes implemented natively with level-order tree and list serialization helpers.
-- **VS Code First**: Preconfigured with `.vscode/tasks.json` and `.vscode/settings.json` for 1-click execution.
-- **CI Verified**: Includes GitHub Actions automated workflow testing compilation across JDK 17 and JDK 21.
-
----
-
-## 🛠️ How to Compile and Run
-
-### 1. Direct Execution (Modern Java 17+ — Fastest)
-Modern Java allows running single-file source code without a manual `javac` step:
+### Option 1: Direct Run (Java 17+)
+Modern Java allows you to execute single `.java` source files directly:
 
 ```bash
-# Run directly from repository root
+# Direct run with interactive stdin
 java Arrays/01_TrappingRainWater.java
 
-# Providing input via file redirection
+# Or pipe input from a file or terminal
 java Arrays/01_TrappingRainWater.java < input.txt
-
-# Or piped input
-echo "12\n0 1 0 2 1 0 1 3 2 1 2 1" | java Arrays/01_TrappingRainWater.java
 ```
 
-### 2. Traditional Terminal Compilation
-```bash
-# 1. Create output directory
-mkdir bin
-
-# 2. Compile any target problem
-javac -d bin Arrays/01_TrappingRainWater.java
-
-# 3. Execute
-java -cp bin Main
-```
-
-### 3. VS Code
-- Open the root folder `NFC-DSA-Practice` in VS Code.
-- Open any `.java` file.
-- Press `Ctrl+Shift+B` (or run task `Run Current Java File`).
-- Alternatively, click the **Run** button provided by the *Language Support for Java* extension.
+### Option 2: In VS Code Editor
+- Open any `.java` file in VS Code.
+- Click the **Run** button at the top-right corner (or press `F5` / `Ctrl+F5`).
 
 ---
 
-## 🗓️ 3-Day High-Intensity Sprint Plan
+## 🔄 Multi-Format Input Support
 
-| Day | Focus Areas | Problem Count | Target Mastery |
-| :--- | :--- | :---: | :--- |
-| **Day 1** | **Arrays & Strings** | 14 | Two Pointers, Monotonic Stack/Deque, Sliding Window, Prefix Sum |
-| **Day 2** | **Linked Lists, Trees & Graphs** | 14 | Pointer Reversals, Fast/Slow, BFS/DFS, TopoSort, Multi-source BFS |
-| **Day 3** | **Recursion & Dynamic Programming** | 17 | Backtracking Pruning, 1D/2D DP, Knapsack, String DP, Interval DP |
+The programs (especially for **Trees**, **Linked Lists**, and **Arrays**) are designed to accept inputs in **multiple formats** seamlessly:
+
+1. **LeetCode Bracket Format**: Copy-paste directly from LeetCode test cases:
+   - Tree: `[3, 9, 20, null, null, 15, 7]` or `root = [3,9,20,null,null,15,7]`
+   - Array / List: `[1, 2, 3, 4, 5]` or `nums = [1,2,3,4,5]`
+2. **Competitive Programming (CP) Format**:
+   - Line 1: `n` (element count)
+   - Line 2: `n` space-separated elements (e.g. `1 2 3 -1 -1 4 5`)
+3. **Raw Space-Separated Format**:
+   - Single line of values: `3 9 20 -1 -1 15 7`
+4. **Flexible Null Indicators for Trees**:
+   - Accepts `null`, `-1`, `#`, or `nil` as empty nodes.
 
 ---
 
 ## 📊 Complete 45-Problem Master Matrix
 
-| # | Problem | Category | Difficulty | Pattern | Source File |
-| :-: | :--- | :--- | :-: | :--- | :--- |
-| 1 | Trapping Rain Water | Array | 🔴 Hard | Two Pointers / Prefix Max | [`Arrays/01_TrappingRainWater.java`](Arrays/01_TrappingRainWater.java) |
-| 2 | First Missing Positive | Array | 🔴 Hard | In-place Cyclic Placement | [`Arrays/02_FirstMissingPositive.java`](Arrays/02_FirstMissingPositive.java) |
-| 3 | Maximum Product Subarray | Array | 🟡 Med/Hard | Kadane Variation (Min/Max) | [`Arrays/03_MaximumProductSubarray.java`](Arrays/03_MaximumProductSubarray.java) |
-| 4 | Subarray Sum Equals K | Array | 🟡 Medium | Prefix Sum + HashMap | [`Arrays/04_SubarraySumEqualsK.java`](Arrays/04_SubarraySumEqualsK.java) |
-| 5 | Sliding Window Maximum | Array | 🔴 Hard | Monotonic Deque | [`Arrays/05_SlidingWindowMaximum.java`](Arrays/05_SlidingWindowMaximum.java) |
-| 6 | Find the Duplicate Number | Array | 🟡 Medium | Floyd's Cycle Detection | [`Arrays/06_FindDuplicateNumber.java`](Arrays/06_FindDuplicateNumber.java) |
-| 7 | Search in Rotated Sorted Array II | Array | 🟡 Medium | Modified Binary Search | [`Arrays/07_SearchInRotatedSortedArrayII.java`](Arrays/07_SearchInRotatedSortedArrayII.java) |
-| 8 | Largest Rectangle in Histogram | Array | 🔴 Hard | Monotonic Stack | [`Arrays/08_LargestRectangleInHistogram.java`](Arrays/08_LargestRectangleInHistogram.java) |
-| 9 | Minimum Window Substring | String | 🔴 Hard | Sliding Window + Frequency | [`Strings/01_MinimumWindowSubstring.java`](Strings/01_MinimumWindowSubstring.java) |
-| 10 | Longest Substring Without Repeating | String | 🟡 Medium | Sliding Window + Map | [`Strings/02_LongestSubstringWithoutRepeatingCharacters.java`](Strings/02_LongestSubstringWithoutRepeatingCharacters.java) |
-| 11 | Longest Repeating Character Replacement | String | 🟡 Medium | Sliding Window + Frequency | [`Strings/03_LongestRepeatingCharacterReplacement.java`](Strings/03_LongestRepeatingCharacterReplacement.java) |
-| 12 | Group Anagrams | String | 🟡 Medium | Hashing / Canonical Form | [`Strings/04_GroupAnagrams.java`](Strings/04_GroupAnagrams.java) |
-| 13 | Palindromic Substrings | String | 🟡 Medium | DP / Expand Around Center | [`Strings/05_PalindromicSubstrings.java`](Strings/05_PalindromicSubstrings.java) |
-| 14 | Longest Palindromic Substring | String | 🟡 Medium | DP / Expand Around Center | [`Strings/06_LongestPalindromicSubstring.java`](Strings/06_LongestPalindromicSubstring.java) |
-| 15 | Reverse Nodes in k-Group | Linked List | 🔴 Hard | Pointer Manipulation | [`LinkedList/01_ReverseNodesInKGroup.java`](LinkedList/01_ReverseNodesInKGroup.java) |
-| 16 | Merge k Sorted Lists | Linked List | 🔴 Hard | PriorityQueue / D&C | [`LinkedList/02_MergeKSortedLists.java`](LinkedList/02_MergeKSortedLists.java) |
-| 17 | Copy List with Random Pointer | Linked List | 🟡 Medium | HashMap / Node Cloning | [`LinkedList/03_CopyListWithRandomPointer.java`](LinkedList/03_CopyListWithRandomPointer.java) |
-| 18 | Reorder List | Linked List | 🟡 Medium | Fast/Slow + Reverse + Merge | [`LinkedList/04_ReorderList.java`](LinkedList/04_ReorderList.java) |
-| 19 | Palindrome Linked List | Linked List | 🟢 Easy/Med | Fast/Slow + Reverse | [`LinkedList/05_PalindromeLinkedList.java`](LinkedList/05_PalindromeLinkedList.java) |
-| 20 | Binary Tree Level Order Traversal | Trees | 🟡 Medium | BFS (Queue) | [`Trees/01_LevelOrderTraversal.java`](Trees/01_LevelOrderTraversal.java) |
-| 21 | Lowest Common Ancestor | Trees | 🟡 Medium | DFS Recursion | [`Trees/02_LowestCommonAncestor.java`](Trees/02_LowestCommonAncestor.java) |
-| 22 | Binary Tree Maximum Path Sum | Trees | 🔴 Hard | DFS + Tree DP | [`Trees/03_BinaryTreeMaximumPathSum.java`](Trees/03_BinaryTreeMaximumPathSum.java) |
-| 23 | Serialize & Deserialize Binary Tree | Trees | 🔴 Hard | DFS/BFS Serialization | [`Trees/04_SerializeDeserializeBinaryTree.java`](Trees/04_SerializeDeserializeBinaryTree.java) |
-| 24 | Construct Tree (Preorder & Inorder) | Trees | 🟡 Medium | Recursion + HashMap | [`Trees/05_ConstructBinaryTreeFromPreorderInorder.java`](Trees/05_ConstructBinaryTreeFromPreorderInorder.java) |
-| 25 | Number of Islands | Graphs | 🟡 Medium | DFS / BFS Flood Fill | [`Graphs/01_NumberOfIslands.java`](Graphs/01_NumberOfIslands.java) |
-| 26 | Course Schedule | Graphs | 🟡 Medium | TopoSort (Kahn's / Indegree) | [`Graphs/02_CourseSchedule.java`](Graphs/02_CourseSchedule.java) |
-| 27 | Rotting Oranges | Graphs | 🟡 Medium | Multi-source BFS | [`Graphs/03_RottingOranges.java`](Graphs/03_RottingOranges.java) |
-| 28 | Number of Provinces | Graphs | 🟡 Medium | DFS / BFS / DSU | [`Graphs/04_NumberOfProvinces.java`](Graphs/04_NumberOfProvinces.java) |
-| 29 | Subsets | Recursion | 🟡 Medium | Backtracking | [`Recursion_DP/01_Subsets.java`](Recursion_DP/01_Subsets.java) |
-| 30 | Permutations | Recursion | 🟡 Medium | Backtracking | [`Recursion_DP/02_Permutations.java`](Recursion_DP/02_Permutations.java) |
-| 31 | Combination Sum | Recursion | 🟡 Medium | Backtracking / Pruning | [`Recursion_DP/03_CombinationSum.java`](Recursion_DP/03_CombinationSum.java) |
-| 32 | N-Queens | Recursion | 🔴 Hard | Backtracking + Bitsets | [`Recursion_DP/04_NQueens.java`](Recursion_DP/04_NQueens.java) |
-| 33 | House Robber | DP | 🟡 Medium | 1D DP | [`Recursion_DP/05_HouseRobber.java`](Recursion_DP/05_HouseRobber.java) |
-| 34 | House Robber II | DP | 🟡 Medium | Circular DP | [`Recursion_DP/06_HouseRobberII.java`](Recursion_DP/06_HouseRobberII.java) |
-| 35 | Coin Change | DP | 🟡 Medium | Unbounded Knapsack / 1D DP | [`Recursion_DP/07_CoinChange.java`](Recursion_DP/07_CoinChange.java) |
-| 36 | Partition Equal Subset Sum | DP | 🟡 Medium | 0/1 Knapsack | [`Recursion_DP/08_PartitionEqualSubsetSum.java`](Recursion_DP/08_PartitionEqualSubsetSum.java) |
-| 37 | Longest Increasing Subsequence | DP | 🟡 Medium | Subsequence DP / O(N log N) | [`Recursion_DP/09_LongestIncreasingSubsequence.java`](Recursion_DP/09_LongestIncreasingSubsequence.java) |
-| 38 | Longest Common Subsequence | DP | 🟡 Medium | 2D DP | [`Recursion_DP/10_LongestCommonSubsequence.java`](Recursion_DP/10_LongestCommonSubsequence.java) |
-| 39 | Edit Distance | DP | 🔴 Hard | 2D String DP | [`Recursion_DP/11_EditDistance.java`](Recursion_DP/11_EditDistance.java) |
-| 40 | Unique Paths | DP | 🟡 Medium | Grid DP | [`Recursion_DP/12_UniquePaths.java`](Recursion_DP/12_UniquePaths.java) |
-| 41 | Word Break | DP | 🟡 Medium | String DP + HashSet | [`Recursion_DP/13_WordBreak.java`](Recursion_DP/13_WordBreak.java) |
-| 42 | Decode Ways | DP | 🟡 Medium | 1D DP | [`Recursion_DP/14_DecodeWays.java`](Recursion_DP/14_DecodeWays.java) |
-| 43 | Target Sum | DP | 🟡 Medium | 0/1 Subset Sum DP | [`Recursion_DP/15_TargetSum.java`](Recursion_DP/15_TargetSum.java) |
-| 44 | Distinct Subsequences | DP | 🔴 Hard | 2D String DP | [`Recursion_DP/16_DistinctSubsequences.java`](Recursion_DP/16_DistinctSubsequences.java) |
-| 45 | Burst Balloons | DP | 🔴 Hard | Interval DP | [`Recursion_DP/17_BurstBalloons.java`](Recursion_DP/17_BurstBalloons.java) |
+| # | Problem | Category | Difficulty | Pattern | Input Formats (Multiple Accepted) | Source File |
+| :-: | :--- | :--- | :-: | :--- | :--- | :--- |
+| 1 | Trapping Rain Water | Array | 🔴 Hard | Two Pointers / Prefix Max | `[0,1,0,2,1,0,1,3,2,1,2,1]`<br>or `12` then `0 1 0 2 1...` | [`Arrays/01_TrappingRainWater.java`](Arrays/01_TrappingRainWater.java) |
+| 2 | First Missing Positive | Array | 🔴 Hard | Cyclic Placement | `[3,4,-1,1]`<br>or `4` then `3 4 -1 1` | [`Arrays/02_FirstMissingPositive.java`](Arrays/02_FirstMissingPositive.java) |
+| 3 | Maximum Product Subarray | Array | 🟡 Med/Hard | Kadane Min/Max | `[2,3,-2,4]`<br>or `4` then `2 3 -2 4` | [`Arrays/03_MaximumProductSubarray.java`](Arrays/03_MaximumProductSubarray.java) |
+| 4 | Subarray Sum Equals K | Array | 🟡 Medium | Prefix Sum + HashMap | Line 1: `n`, Line 2: array, Line 3: `k`<br>or array line then `k` | [`Arrays/04_SubarraySumEqualsK.java`](Arrays/04_SubarraySumEqualsK.java) |
+| 5 | Sliding Window Maximum | Array | 🔴 Hard | Monotonic Deque | Line 1: `n`, Line 2: array, Line 3: `k`<br>or array line then `k` | [`Arrays/05_SlidingWindowMaximum.java`](Arrays/05_SlidingWindowMaximum.java) |
+| 6 | Find Duplicate Number | Array | 🟡 Medium | Floyd's Cycle Detection | `[1,3,4,2,2]`<br>or `5` then `1 3 4 2 2` | [`Arrays/06_FindDuplicateNumber.java`](Arrays/06_FindDuplicateNumber.java) |
+| 7 | Search in Rotated Array II | Array | 🟡 Medium | Modified Binary Search | Line 1: `n`, Line 2: array, Line 3: `target`<br>or array line then `target` | [`Arrays/07_SearchInRotatedSortedArrayII.java`](Arrays/07_SearchInRotatedSortedArrayII.java) |
+| 8 | Largest Rectangle in Histogram | Array | 🔴 Hard | Monotonic Stack | `[2,1,5,6,2,3]`<br>or `6` then `2 1 5 6 2 3` | [`Arrays/08_LargestRectangleInHistogram.java`](Arrays/08_LargestRectangleInHistogram.java) |
+| 9 | Minimum Window Substring | String | 🔴 Hard | Sliding Window + Map | Line 1: `s`, Line 2: `t` | [`Strings/01_MinimumWindowSubstring.java`](Strings/01_MinimumWindowSubstring.java) |
+| 10 | Longest Substring No Repeat | String | 🟡 Medium | Sliding Window + Map | Line 1: `s` (raw text or quoted) | [`Strings/02_LongestSubstringWithoutRepeatingCharacters.java`](Strings/02_LongestSubstringWithoutRepeatingCharacters.java) |
+| 11 | Longest Repeating Char Replacement | String | 🟡 Medium | Sliding Window + Freq | Line 1: `s`, Line 2: `k` | [`Strings/03_LongestRepeatingCharacterReplacement.java`](Strings/03_LongestRepeatingCharacterReplacement.java) |
+| 12 | Group Anagrams | String | 🟡 Medium | Hashing / Canonical Form | Line 1: `n`, Line 2: space-separated words | [`Strings/04_GroupAnagrams.java`](Strings/04_GroupAnagrams.java) |
+| 13 | Palindromic Substrings | String | 🟡 Medium | DP / Expand Around Center | Line 1: `s` | [`Strings/05_PalindromicSubstrings.java`](Strings/05_PalindromicSubstrings.java) |
+| 14 | Longest Palindromic Substring | String | 🟡 Medium | DP / Expand Around Center | Line 1: `s` | [`Strings/06_LongestPalindromicSubstring.java`](Strings/06_LongestPalindromicSubstring.java) |
+| 15 | Reverse Nodes in k-Group | Linked List | 🔴 Hard | Pointer Manipulation | `[1,2,3,4,5]` then `k = 2`<br>or `5` then `1 2 3 4 5` then `2` | [`LinkedList/01_ReverseNodesInKGroup.java`](LinkedList/01_ReverseNodesInKGroup.java) |
+| 16 | Merge k Sorted Lists | Linked List | 🔴 Hard | PriorityQueue / D&C | Line 1: `k`<br>Each list: count `m` then `m` values | [`LinkedList/02_MergeKSortedLists.java`](LinkedList/02_MergeKSortedLists.java) |
+| 17 | Copy List Random Pointer | Linked List | 🟡 Medium | HashMap / Node Cloning | Line 1: `n`<br>Following `n` lines: `val random_idx` | [`LinkedList/03_CopyListWithRandomPointer.java`](LinkedList/03_CopyListWithRandomPointer.java) |
+| 18 | Reorder List | Linked List | 🟡 Medium | Fast/Slow + Reverse + Merge | `[1,2,3,4]`<br>or `4` then `1 2 3 4` | [`LinkedList/04_ReorderList.java`](LinkedList/04_ReorderList.java) |
+| 19 | Palindrome Linked List | Linked List | 🟢 Easy/Med | Fast/Slow + Reverse | `[1,2,2,1]`<br>or `4` then `1 2 2 1` | [`LinkedList/05_PalindromeLinkedList.java`](LinkedList/05_PalindromeLinkedList.java) |
+| 20 | Binary Tree Level Order | Trees | 🟡 Medium | BFS (Queue) | `[3,9,20,null,null,15,7]`<br>or `7` then `3 9 20 -1 -1 15 7`<br>or `3 9 20 null null 15 7` | [`Trees/01_LevelOrderTraversal.java`](Trees/01_LevelOrderTraversal.java) |
+| 21 | Lowest Common Ancestor | Trees | 🟡 Medium | DFS Recursion | Tree: `[3,5,1,...]` or `tokens`<br>Next line: `p q` (or `p = 5, q = 1`) | [`Trees/02_LowestCommonAncestor.java`](Trees/02_LowestCommonAncestor.java) |
+| 22 | Tree Maximum Path Sum | Trees | 🔴 Hard | DFS + Tree DP | `[-10,9,20,null,null,15,7]`<br>or `5` then `-10 9 20 -1 -1 15 7` | [`Trees/03_BinaryTreeMaximumPathSum.java`](Trees/03_BinaryTreeMaximumPathSum.java) |
+| 23 | Serialize & Deserialize Tree | Trees | 🔴 Hard | DFS/BFS Serialization | `[1,2,3,null,null,4,5]`<br>or `5` then `1 2 3 -1 -1 4 5` | [`Trees/04_SerializeDeserializeBinaryTree.java`](Trees/04_SerializeDeserializeBinaryTree.java) |
+| 24 | Construct Tree (Pre & In) | Trees | 🟡 Medium | Recursion + HashMap | Line 1: `[3,9,20,15,7]`, Line 2: `[9,3,15,20,7]`<br>or count `5` then preorder then inorder | [`Trees/05_ConstructBinaryTreeFromPreorderInorder.java`](Trees/05_ConstructBinaryTreeFromPreorderInorder.java) |
+| 25 | Number of Islands | Graphs | 🟡 Medium | DFS / BFS Flood Fill | Line 1: `rows cols`<br>Following lines: grid characters (`1`/`0`) | [`Graphs/01_NumberOfIslands.java`](Graphs/01_NumberOfIslands.java) |
+| 26 | Course Schedule | Graphs | 🟡 Medium | TopoSort (Kahn's) | Line 1: `numCourses m`<br>Following `m` lines: `u v` | [`Graphs/02_CourseSchedule.java`](Graphs/02_CourseSchedule.java) |
+| 27 | Rotting Oranges | Graphs | 🟡 Medium | Multi-source BFS | Line 1: `rows cols`<br>Following lines: grid values (`0`, `1`, `2`) | [`Graphs/03_RottingOranges.java`](Graphs/03_RottingOranges.java) |
+| 28 | Number of Provinces | Graphs | 🟡 Medium | DFS / BFS / DSU | Line 1: `n`<br>Following `n` lines: `n x n` matrix | [`Graphs/04_NumberOfProvinces.java`](Graphs/04_NumberOfProvinces.java) |
+| 29 | Subsets | Recursion | 🟡 Medium | Backtracking | `[1,2,3]`<br>or `3` then `1 2 3` | [`Recursion_DP/01_Subsets.java`](Recursion_DP/01_Subsets.java) |
+| 30 | Permutations | Recursion | 🟡 Medium | Backtracking | `[1,2,3]`<br>or `3` then `1 2 3` | [`Recursion_DP/02_Permutations.java`](Recursion_DP/02_Permutations.java) |
+| 31 | Combination Sum | Recursion | 🟡 Medium | Backtracking / Pruning | Line 1: candidates `[2,3,6,7]`<br>Line 2: target `7` | [`Recursion_DP/03_CombinationSum.java`](Recursion_DP/03_CombinationSum.java) |
+| 32 | N-Queens | Recursion | 🔴 Hard | Backtracking + Bitsets | Single integer: `n` (e.g. `4`) | [`Recursion_DP/04_NQueens.java`](Recursion_DP/04_NQueens.java) |
+| 33 | House Robber | DP | 🟡 Medium | 1D DP | `[1,2,3,1]`<br>or `4` then `1 2 3 1` | [`Recursion_DP/05_HouseRobber.java`](Recursion_DP/05_HouseRobber.java) |
+| 34 | House Robber II | DP | 🟡 Medium | Circular DP | `[2,3,2]`<br>or `3` then `2 3 2` | [`Recursion_DP/06_HouseRobberII.java`](Recursion_DP/06_HouseRobberII.java) |
+| 35 | Coin Change | DP | 🟡 Medium | Unbounded Knapsack | Line 1: coins `[1,2,5]`<br>Line 2: amount `11` | [`Recursion_DP/07_CoinChange.java`](Recursion_DP/07_CoinChange.java) |
+| 36 | Partition Equal Subset Sum | DP | 🟡 Medium | 0/1 Knapsack | `[1,5,11,5]`<br>or `4` then `1 5 11 5` | [`Recursion_DP/08_PartitionEqualSubsetSum.java`](Recursion_DP/08_PartitionEqualSubsetSum.java) |
+| 37 | Longest Increasing Subsequence | DP | 🟡 Medium | Subsequence DP O(N log N) | `[10,9,2,5,3,7,101,18]`<br>or `8` then values | [`Recursion_DP/09_LongestIncreasingSubsequence.java`](Recursion_DP/09_LongestIncreasingSubsequence.java) |
+| 38 | Longest Common Subsequence | DP | 🟡 Medium | 2D DP | Line 1: `text1`<br>Line 2: `text2` | [`Recursion_DP/10_LongestCommonSubsequence.java`](Recursion_DP/10_LongestCommonSubsequence.java) |
+| 39 | Edit Distance | DP | 🔴 Hard | 2D String DP | Line 1: `word1`<br>Line 2: `word2` | [`Recursion_DP/11_EditDistance.java`](Recursion_DP/11_EditDistance.java) |
+| 40 | Unique Paths | DP | 🟡 Medium | Grid DP | `m n` (e.g. `3 7`) | [`Recursion_DP/12_UniquePaths.java`](Recursion_DP/12_UniquePaths.java) |
+| 41 | Word Break | DP | 🟡 Medium | String DP + HashSet | Line 1: `s`<br>Line 2: `k`<br>Line 3: `k` dictionary words | [`Recursion_DP/13_WordBreak.java`](Recursion_DP/13_WordBreak.java) |
+| 42 | Decode Ways | DP | 🟡 Medium | 1D DP | Line 1: digits string (e.g. `226`) | [`Recursion_DP/14_DecodeWays.java`](Recursion_DP/14_DecodeWays.java) |
+| 43 | Target Sum | DP | 🟡 Medium | 0/1 Subset Sum DP | Line 1: `n`, Line 2: array, Line 3: `target`<br>or array line then `target` | [`Recursion_DP/15_TargetSum.java`](Recursion_DP/15_TargetSum.java) |
+| 44 | Distinct Subsequences | DP | 🔴 Hard | 2D String DP | Line 1: `s`, Line 2: `t` | [`Recursion_DP/16_DistinctSubsequences.java`](Recursion_DP/16_DistinctSubsequences.java) |
+| 45 | Burst Balloons | DP | 🔴 Hard | Interval DP | `[3,1,5,8]`<br>or `4` then `3 1 5 8` | [`Recursion_DP/17_BurstBalloons.java`](Recursion_DP/17_BurstBalloons.java) |
 
 ---
 
@@ -152,8 +122,8 @@ java -cp bin Main
 - **Pattern**: Two pointers / prefix maximum
 - **File**: [`Arrays/01_TrappingRainWater.java`](Arrays/01_TrappingRainWater.java)
 - **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
+  - Format A: `n` on line 1, `n` space-separated integers on line 2
+  - Format B: Space-separated integers on a single line
 - **Sample Input**:
   ```text
   12
@@ -205,7 +175,7 @@ java -cp bin Main
 - **Input Format**:
   - Line 1: `n`
   - Line 2: `n` space-separated integers
-  - Line 3: `k`
+  - Line 3: `k` (target sum)
 - **Sample Input**:
   ```text
   3
@@ -224,7 +194,7 @@ java -cp bin Main
 - **Input Format**:
   - Line 1: `n`
   - Line 2: `n` space-separated integers
-  - Line 3: `k`
+  - Line 3: `k` (window size)
 - **Sample Input**:
   ```text
   8
@@ -400,9 +370,8 @@ java -cp bin Main
 - **Pattern**: Linked-list pointer manipulation
 - **File**: [`LinkedList/01_ReverseNodesInKGroup.java`](LinkedList/01_ReverseNodesInKGroup.java)
 - **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
-  - Line 3: `k`
+  - Format A: `[1, 2, 3, 4, 5]` on Line 1, `2` on Line 2
+  - Format B: `5` on Line 1, `1 2 3 4 5` on Line 2, `2` on Line 3
 - **Sample Input**:
   ```text
   5
@@ -420,7 +389,7 @@ java -cp bin Main
 - **File**: [`LinkedList/02_MergeKSortedLists.java`](LinkedList/02_MergeKSortedLists.java)
 - **Input Format**:
   - Line 1: `k`
-  - For each list: `m` followed by `m` space-separated values
+  - For each list: count `m` followed by `m` space-separated values
 - **Sample Input**:
   ```text
   3
@@ -503,13 +472,13 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: BFS
 - **File**: [`Trees/01_LevelOrderTraversal.java`](Trees/01_LevelOrderTraversal.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated tokens (`-1` or `null` for empty)
+- **Supported Input Formats**:
+  - Format A (LeetCode Bracketed): `[3, 9, 20, null, null, 15, 7]`
+  - Format B (CP Count + Tokens): Line 1: `7`, Line 2: `3 9 20 -1 -1 15 7`
+  - Format C (Raw Stream): `3 9 20 -1 -1 15 7`
 - **Sample Input**:
   ```text
-  7
-  3 9 20 -1 -1 15 7
+  [3, 9, 20, null, null, 15, 7]
   ```
 - **Sample Output**:
   ```text
@@ -522,14 +491,12 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: DFS
 - **File**: [`Trees/02_LowestCommonAncestor.java`](Trees/02_LowestCommonAncestor.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` tokens
-  - Line 3: `p q`
+- **Supported Input Formats**:
+  - Format A: Line 1: `[3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]`, Line 2: `5 1`
+  - Format B: Line 1: `11`, Line 2: `3 5 1 6 2 0 8 -1 -1 7 4`, Line 3: `5 1`
 - **Sample Input**:
   ```text
-  11
-  3 5 1 6 2 0 8 -1 -1 7 4
+  [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]
   5 1
   ```
 - **Sample Output**:
@@ -541,13 +508,12 @@ java -cp bin Main
 - **Difficulty**: Hard
 - **Pattern**: DFS + tree DP
 - **File**: [`Trees/03_BinaryTreeMaximumPathSum.java`](Trees/03_BinaryTreeMaximumPathSum.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` tokens
+- **Supported Input Formats**:
+  - Format A: `[-10, 9, 20, null, null, 15, 7]`
+  - Format B: Line 1: `5`, Line 2: `-10 9 20 -1 -1 15 7`
 - **Sample Input**:
   ```text
-  5
-  -10 9 20 -1 -1 15 7
+  [-10, 9, 20, null, null, 15, 7]
   ```
 - **Sample Output**:
   ```text
@@ -558,13 +524,12 @@ java -cp bin Main
 - **Difficulty**: Hard
 - **Pattern**: DFS/BFS serialization
 - **File**: [`Trees/04_SerializeDeserializeBinaryTree.java`](Trees/04_SerializeDeserializeBinaryTree.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` tokens
+- **Supported Input Formats**:
+  - Format A: `[1, 2, 3, null, null, 4, 5]`
+  - Format B: Line 1: `5`, Line 2: `1 2 3 -1 -1 4 5`
 - **Sample Input**:
   ```text
-  5
-  1 2 3 -1 -1 4 5
+  [1, 2, 3, null, null, 4, 5]
   ```
 - **Sample Output**:
   ```text
@@ -576,15 +541,13 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: Recursion + HashMap
 - **File**: [`Trees/05_ConstructBinaryTreeFromPreorderInorder.java`](Trees/05_ConstructBinaryTreeFromPreorderInorder.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers (preorder)
-  - Line 3: `n` space-separated integers (inorder)
+- **Supported Input Formats**:
+  - Format A: Line 1: `[3, 9, 20, 15, 7]`, Line 2: `[9, 3, 15, 20, 7]`
+  - Format B: Line 1: `5`, Line 2: `3 9 20 15 7`, Line 3: `9 3 15 20 7`
 - **Sample Input**:
   ```text
-  5
-  3 9 20 15 7
-  9 3 15 20 7
+  [3, 9, 20, 15, 7]
+  [9, 3, 15, 20, 7]
   ```
 - **Sample Output**:
   ```text
@@ -601,7 +564,7 @@ java -cp bin Main
 - **File**: [`Graphs/01_NumberOfIslands.java`](Graphs/01_NumberOfIslands.java)
 - **Input Format**:
   - Line 1: `rows cols`
-  - Next `rows` lines: grid characters (`1` for land, `0` for water)
+  - Next `rows` lines: grid values (`1`/`0`)
 - **Sample Input**:
   ```text
   4 5
@@ -621,7 +584,7 @@ java -cp bin Main
 - **File**: [`Graphs/02_CourseSchedule.java`](Graphs/02_CourseSchedule.java)
 - **Input Format**:
   - Line 1: `numCourses m`
-  - Next `m` lines: `u v` (prerequisite v before u)
+  - Next `m` lines: `u v` (course `v` required before `u`)
 - **Sample Input**:
   ```text
   2 1
@@ -638,7 +601,7 @@ java -cp bin Main
 - **File**: [`Graphs/03_RottingOranges.java`](Graphs/03_RottingOranges.java)
 - **Input Format**:
   - Line 1: `rows cols`
-  - Next `rows` lines: `cols` space-separated values (`0`: empty, `1`: fresh, `2`: rotten)
+  - Next `rows` lines: grid values (`0`: empty, `1`: fresh, `2`: rotten)
 - **Sample Input**:
   ```text
   3 3
@@ -657,7 +620,7 @@ java -cp bin Main
 - **File**: [`Graphs/04_NumberOfProvinces.java`](Graphs/04_NumberOfProvinces.java)
 - **Input Format**:
   - Line 1: `n`
-  - Next `n` lines: `n` space-separated integers (connectivity matrix)
+  - Next `n` lines: `n x n` connectivity matrix
 - **Sample Input**:
   ```text
   3
@@ -678,9 +641,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: Backtracking
 - **File**: [`Recursion_DP/01_Subsets.java`](Recursion_DP/01_Subsets.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
 - **Sample Input**:
   ```text
   3
@@ -702,9 +662,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: Backtracking
 - **File**: [`Recursion_DP/02_Permutations.java`](Recursion_DP/02_Permutations.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
 - **Sample Input**:
   ```text
   3
@@ -724,10 +681,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: Backtracking
 - **File**: [`Recursion_DP/03_CombinationSum.java`](Recursion_DP/03_CombinationSum.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
-  - Line 3: `target`
 - **Sample Input**:
   ```text
   4
@@ -744,8 +697,6 @@ java -cp bin Main
 - **Difficulty**: Hard
 - **Pattern**: Backtracking
 - **File**: [`Recursion_DP/04_NQueens.java`](Recursion_DP/04_NQueens.java)
-- **Input Format**:
-  - Line 1: `n`
 - **Sample Input**:
   ```text
   4
@@ -771,9 +722,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: 1D DP
 - **File**: [`Recursion_DP/05_HouseRobber.java`](Recursion_DP/05_HouseRobber.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
 - **Sample Input**:
   ```text
   4
@@ -788,9 +736,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: Circular DP
 - **File**: [`Recursion_DP/06_HouseRobberII.java`](Recursion_DP/06_HouseRobberII.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
 - **Sample Input**:
   ```text
   3
@@ -803,12 +748,8 @@ java -cp bin Main
 
 #### 35. Coin Change (LeetCode 322)
 - **Difficulty**: Medium
-- **Pattern**: Unbounded knapsack / 1D DP
+- **Pattern**: Unbounded knapsack
 - **File**: [`Recursion_DP/07_CoinChange.java`](Recursion_DP/07_CoinChange.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
-  - Line 3: `amount`
 - **Sample Input**:
   ```text
   3
@@ -824,9 +765,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: 0/1 knapsack
 - **File**: [`Recursion_DP/08_PartitionEqualSubsetSum.java`](Recursion_DP/08_PartitionEqualSubsetSum.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
 - **Sample Input**:
   ```text
   4
@@ -839,11 +777,8 @@ java -cp bin Main
 
 #### 37. Longest Increasing Subsequence (LeetCode 300)
 - **Difficulty**: Medium
-- **Pattern**: Subsequence DP / Binary Search O(N log N)
+- **Pattern**: Subsequence DP O(N log N)
 - **File**: [`Recursion_DP/09_LongestIncreasingSubsequence.java`](Recursion_DP/09_LongestIncreasingSubsequence.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
 - **Sample Input**:
   ```text
   8
@@ -858,9 +793,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: 2D DP
 - **File**: [`Recursion_DP/10_LongestCommonSubsequence.java`](Recursion_DP/10_LongestCommonSubsequence.java)
-- **Input Format**:
-  - Line 1: `text1`
-  - Line 2: `text2`
 - **Sample Input**:
   ```text
   abcde
@@ -875,9 +807,6 @@ java -cp bin Main
 - **Difficulty**: Hard
 - **Pattern**: 2D string DP
 - **File**: [`Recursion_DP/11_EditDistance.java`](Recursion_DP/11_EditDistance.java)
-- **Input Format**:
-  - Line 1: `word1`
-  - Line 2: `word2`
 - **Sample Input**:
   ```text
   horse
@@ -892,8 +821,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: Grid DP
 - **File**: [`Recursion_DP/12_UniquePaths.java`](Recursion_DP/12_UniquePaths.java)
-- **Input Format**:
-  - Line 1: `m n`
 - **Sample Input**:
   ```text
   3 7
@@ -905,12 +832,8 @@ java -cp bin Main
 
 #### 41. Word Break (LeetCode 139)
 - **Difficulty**: Medium
-- **Pattern**: String DP + HashSet
+- **Pattern**: String DP
 - **File**: [`Recursion_DP/13_WordBreak.java`](Recursion_DP/13_WordBreak.java)
-- **Input Format**:
-  - Line 1: `s`
-  - Line 2: `k`
-  - Line 3: `k` space-separated dictionary words
 - **Sample Input**:
   ```text
   leetcode
@@ -926,8 +849,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: 1D DP
 - **File**: [`Recursion_DP/14_DecodeWays.java`](Recursion_DP/14_DecodeWays.java)
-- **Input Format**:
-  - Line 1: `s`
 - **Sample Input**:
   ```text
   226
@@ -941,10 +862,6 @@ java -cp bin Main
 - **Difficulty**: Medium
 - **Pattern**: DP / knapsack
 - **File**: [`Recursion_DP/15_TargetSum.java`](Recursion_DP/15_TargetSum.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
-  - Line 3: `target`
 - **Sample Input**:
   ```text
   5
@@ -960,9 +877,6 @@ java -cp bin Main
 - **Difficulty**: Hard
 - **Pattern**: 2D string DP
 - **File**: [`Recursion_DP/16_DistinctSubsequences.java`](Recursion_DP/16_DistinctSubsequences.java)
-- **Input Format**:
-  - Line 1: `s`
-  - Line 2: `t`
 - **Sample Input**:
   ```text
   rabbbit
@@ -977,9 +891,6 @@ java -cp bin Main
 - **Difficulty**: Hard
 - **Pattern**: Interval DP
 - **File**: [`Recursion_DP/17_BurstBalloons.java`](Recursion_DP/17_BurstBalloons.java)
-- **Input Format**:
-  - Line 1: `n`
-  - Line 2: `n` space-separated integers
 - **Sample Input**:
   ```text
   4
