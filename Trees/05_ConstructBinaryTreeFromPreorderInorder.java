@@ -3,10 +3,10 @@
  * Difficulty: Medium
  * Pattern: Recursion + HashMap
  *
- * Input Formats Supported:
- * Format 1 (LeetCode):    Line 1: [3, 9, 20, 15, 7], Line 2: [9, 3, 15, 20, 7]
- * Format 2 (Competitive): Line 1: n, Line 2: preorder, Line 3: inorder
- * Format 3 (Raw Tokens):  Line 1: 3 9 20 15 7, Line 2: 9 3 15 20 7
+ * Input Format:
+ * Line 1: An integer n denoting the number of nodes.
+ * Line 2: n space-separated integers representing preorder traversal.
+ * Line 3: n space-separated integers representing inorder traversal.
  *
  * Output Format:
  * Space-separated tokens representing the level-order traversal of the constructed tree (-1 for null).
@@ -38,18 +38,26 @@ class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        List<Integer> preList = readIntList(br);
-        if (preList.isEmpty()) return;
+        String line = br.readLine();
+        if (line == null || line.trim().isEmpty()) {
+            return;
+        }
 
-        List<Integer> inList = readIntList(br);
-        if (inList.isEmpty()) return;
+        int n = Integer.parseInt(line.trim());
+        if (n == 0) {
+            return;
+        }
 
-        int n = preList.size();
         int[] preorder = new int[n];
-        int[] inorder = new int[n];
+        StringTokenizer stPre = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            preorder[i] = preList.get(i);
-            inorder[i] = inList.get(i);
+            preorder[i] = Integer.parseInt(stPre.nextToken());
+        }
+
+        int[] inorder = new int[n];
+        StringTokenizer stIn = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            inorder[i] = Integer.parseInt(stIn.nextToken());
             inorderMap.put(inorder[i], i);
         }
 
@@ -59,40 +67,6 @@ class Main {
         // Print level order traversal
         List<String> output = getLevelOrder(root);
         System.out.println(String.join(" ", output));
-    }
-
-    private static List<Integer> readIntList(BufferedReader br) throws IOException {
-        String line = br.readLine();
-        while (line != null && line.trim().isEmpty()) {
-            line = br.readLine();
-        }
-        if (line == null) return new ArrayList<>();
-
-        if (line.contains("[") || line.contains("=")) {
-            return parseIntTokens(line);
-        }
-
-        List<Integer> tokens = parseIntTokens(line);
-        if (tokens.size() == 1) {
-            String nextLine = br.readLine();
-            if (nextLine != null && !nextLine.trim().isEmpty()) {
-                return parseIntTokens(nextLine);
-            }
-        }
-        return tokens;
-    }
-
-    private static List<Integer> parseIntTokens(String text) {
-        text = text.replaceAll("[a-zA-Z]+\\s*=", " ");
-        text = text.replace("[", " ").replace("]", " ").replace(",", " ").trim();
-        StringTokenizer st = new StringTokenizer(text);
-        List<Integer> list = new ArrayList<>();
-        while (st.hasMoreTokens()) {
-            try {
-                list.add(Integer.parseInt(st.nextToken()));
-            } catch (NumberFormatException ignored) {}
-        }
-        return list;
     }
 
     private static TreeNode buildTreeHelper(int[] preorder, int inStart, int inEnd) {

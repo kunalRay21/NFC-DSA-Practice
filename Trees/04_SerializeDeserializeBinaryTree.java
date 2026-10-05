@@ -3,10 +3,9 @@
  * Difficulty: Hard
  * Pattern: DFS/BFS serialization
  *
- * Input Formats Supported:
- * Format 1 (LeetCode):    [1, 2, 3, null, null, 4, 5] or root = [1, 2, 3, null, null, 4, 5]
- * Format 2 (Competitive): Line 1: n, Line 2: n tokens
- * Format 3 (Raw Tokens):  1 2 3 -1 -1 4 5
+ * Input Format:
+ * Line 1: An integer n denoting the number of tokens in the initial level-order tree.
+ * Line 2: n space-separated tokens (use "null", "#", or "-1" for empty nodes).
  *
  * Output Format:
  * Line 1: The serialized string representation.
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -37,12 +35,22 @@ class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        List<String> tokens = readTreeTokens(br);
+        String line = br.readLine();
+        if (line == null || line.trim().isEmpty()) {
+            return;
+        }
 
-        if (tokens.isEmpty()) {
+        int n = Integer.parseInt(line.trim());
+        if (n == 0) {
             System.out.println("null");
             System.out.println("[]");
             return;
+        }
+
+        String[] tokens = new String[n];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            tokens[i] = st.nextToken();
         }
 
         TreeNode originalRoot = buildTree(tokens);
@@ -93,66 +101,28 @@ class Main {
         return node;
     }
 
-    private static List<String> readTreeTokens(BufferedReader br) throws IOException {
-        String line = br.readLine();
-        while (line != null && line.trim().isEmpty()) {
-            line = br.readLine();
-        }
-        if (line == null) return Collections.emptyList();
+    private static TreeNode buildTree(String[] tokens) {
+        if (tokens == null || tokens.length == 0 || isNull(tokens[0])) return null;
 
-        if (line.contains("[") || line.contains("=")) {
-            return parseTokens(line);
-        }
-
-        List<String> tokens = parseTokens(line);
-        if (tokens.size() == 1) {
-            try {
-                Integer.parseInt(tokens.get(0));
-                String nextLine = br.readLine();
-                if (nextLine != null && !nextLine.trim().isEmpty()) {
-                    return parseTokens(nextLine);
-                }
-            } catch (NumberFormatException ignored) {}
-        }
-        return tokens;
-    }
-
-    private static List<String> parseTokens(String text) {
-        int eqIdx = text.indexOf('=');
-        if (eqIdx != -1) {
-            text = text.substring(eqIdx + 1);
-        }
-        text = text.replace("[", " ").replace("]", " ").replace(",", " ").trim();
-        StringTokenizer st = new StringTokenizer(text);
-        List<String> list = new ArrayList<>();
-        while (st.hasMoreTokens()) {
-            list.add(st.nextToken());
-        }
-        return list;
-    }
-
-    private static TreeNode buildTree(List<String> tokens) {
-        if (tokens == null || tokens.isEmpty() || isNull(tokens.get(0))) return null;
-
-        TreeNode root = new TreeNode(Integer.parseInt(tokens.get(0)));
+        TreeNode root = new TreeNode(Integer.parseInt(tokens[0]));
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.offer(root);
         int idx = 1;
 
-        while (!queue.isEmpty() && idx < tokens.size()) {
+        while (!queue.isEmpty() && idx < tokens.length) {
             TreeNode curr = queue.poll();
 
-            if (idx < tokens.size()) {
-                if (!isNull(tokens.get(idx))) {
-                    curr.left = new TreeNode(Integer.parseInt(tokens.get(idx)));
+            if (idx < tokens.length) {
+                if (!isNull(tokens[idx])) {
+                    curr.left = new TreeNode(Integer.parseInt(tokens[idx]));
                     queue.offer(curr.left);
                 }
                 idx++;
             }
 
-            if (idx < tokens.size()) {
-                if (!isNull(tokens.get(idx))) {
-                    curr.right = new TreeNode(Integer.parseInt(tokens.get(idx)));
+            if (idx < tokens.length) {
+                if (!isNull(tokens[idx])) {
+                    curr.right = new TreeNode(Integer.parseInt(tokens[idx]));
                     queue.offer(curr.right);
                 }
                 idx++;
@@ -163,7 +133,7 @@ class Main {
     }
 
     private static boolean isNull(String token) {
-        return "null".equalsIgnoreCase(token) || "#".equals(token) || "-1".equals(token) || "nil".equalsIgnoreCase(token);
+        return "null".equalsIgnoreCase(token) || "#".equals(token) || "-1".equals(token);
     }
 
     private static List<Integer> levelOrderList(TreeNode root) {
